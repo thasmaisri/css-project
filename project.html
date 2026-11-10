@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FROST-ICE CREAM</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: beige;
+        }
+
+        /* Sidebar(navbar) */
+
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background-color: darkslateblue;
+            color: white;
+            padding: 40px 30px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            /* overflow-y: auto; */
+    
+        }
+
+        .logo {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 13px;
+            color: lightseagreen;
+            margin-bottom: 60px;
+        }
+        .sidebar ul li {
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            font-size: 16px;
+        }
+
+        .sidebar ul li a:hover {
+            color: orange;
+        }
+
+        .hours {
+            margin-top: 100px;
+            font-size: 13px;
+            color: bisque;
+        }
+
+        .hours h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .main {
+            margin-left: 200px;
+            width: 90%;
+            min-height: 100vh;
+            padding: 100px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            
+        }
+
+        .content {
+            width: 50%;
+        }
+
+        .small-heading {
+            color: orange;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .content h1 {
+            font-size: 55px;
+            color: darkslateblue;
+            margin-bottom: 25px;
+        }
+
+        .content p {
+            font-size: 17px;
+            color: lightslategrey;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn1 {
+            background-color: orange;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+        }
+
+        .btn2 {
+            border: 2px solid darkslateblue;
+            color: blueviolet;
+            padding: 13px 25px;
+            border-radius: 5px;
+        }
+
+        .btn1:hover {
+            background-color: darkslateblue;
+        }
+
+        .btn2:hover {
+            background-color: darkslateblue;
+            color: white;
+        }
+
+        /* ICE CREAM DESIGN */
+
+        .icecream {
+            width: 45%;
+            height: 450px;
+            position: relative;
+        }
+
+        .scoop1 {
+            width: 220px;
+            height: 220px;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            left: 100px;
+        }
+
+        .scoop2 {
+            width: 180px;
+            height: 180px;
+            background-color: lightseagreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 190px;
+            left: 30px;
+        }
+
+        .scoop3 {
+            width: 170px;
+            height: 170px;
+            background-color: bisque;
+            border-radius: 50%;
+            position: absolute;
+            top: 210px;
+            left: 220px;
+        }
+
+        /* FLAVORS SECTION */
+
+        .flavors {
+            margin-left: 200px;
+            width: 75%;
+            min-height: 100vh;
+            padding: 70px 50px;
+        }
+
+        .flavor-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .flavor-heading h4 {
+            color: orange;
+            margin-bottom: 15px;
+        }
+
+        .flavor-heading h1 {
+            font-size: 40px;
+            color: darkslategrey;
+            margin-bottom: 15px;
+        }
+
+        .flavor-heading p {
+            color: lightslategray;
+            font-size: 16px;
+        }
+
+       /* page-2 */
+
+        .flavor-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .flavor-card {
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .flavor-card:hover {
+            background-color: aliceblue;
+        }
+
+        .flavor-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .chocolate {
+            background-color: #795548;
+        }
+
+        .vanilla {
+            background-color: #f0d9a8;
+        }
+
+        .strawberry {
+            background-color: #e98a9b;
+        }
+
+        .flavor-card h2 {
+            color: grey;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .flavor-card p {
+            color: black;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .flavor-card h3 {
+            color: orange;
+            font-size: 18px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- SIDEBAR (NAVBAR)-->
+    <div class="sidebar">
+        <h2 class="logo">Frost.</h2>
+        <p class="tagline">
+            Cool treats for warm hearts
+        </p>
+        <ul>
+            <li><a href="#home"> Home</a></li>
+            <li><a href="#flavors">Flavors</a></li>
+            <li><a href="#home">Build Yours</a></li>
+            <li><a href="#home">Catering</a></li>
+            <li><a href="#home">Seasonal</a></li>
+            <li><a href="#home">Loyalty</a></li>
+        </ul>
+
+        <div class="hours">
+            <h3>Visit Us</h3>
+            <p>Mon - Fri: 11 AM - 9 PM</p>
+            <p>Sat - Sun: 10 AM - 10 PM</p>
+        </div>
+    </div>
+
+    <section class="main" id="home">
+        <div class="content">
+            <h4 class="small-heading">
+                NOW SCOOPING
+            </h4>
+            <h1>
+                Life's too short for boring desserts.
+            </h1>
+            <p>
+                Handcrafted ice creams made with love,
+                fresh ingredients and a little bit of magic.
+                Come and enjoy your favorite flavors!
+            </p>
+            <div class="buttons">
+                <a href="#flavors" class="btn1">
+                    Explore Flavors
+                </a>
+                <a href="#flavors" class="btn2">
+                    Book a Cart
+                </a>
+            </div>
+        </div>
+        <div class="icecream">
+            <div class="scoop1"></div>
+            <div class="scoop2"></div>
+            <div class="scoop3"></div>
+        </div>
+    </section>
+    <section class="flavors" id="flavors">
+        <div class="flavor-heading">
+            <h4>OUR MENU</h4>
+            <h1>Explore Our Flavors</h1>
+            <p>
+                Every scoop is made with fresh ingredients
+                and lots of love. Find your favorite flavor!
+            </p>
+        </div>
+        <div class="flavor-container">
+            <div class="flavor-card">
+                <div class="flavor-image chocolate"></div>
+                <h2>Chocolate</h2>
+                <p>
+                    Rich and creamy chocolate ice cream.
+                </p>
+                <h3>₹120</h3>
+            </div>
+            <div class="flavor-card">
+                <div class="flavor-image vanilla"></div>
+                <h2>Vanilla</h2>
+                <p>
+                    Classic vanilla with a smooth taste.
+                </p>
+                <h3>₹100</h3>
+            </div>
+            <div class="flavor-card">
+                <div class="flavor-image strawberry"></div>
+                <h2>Strawberry</h2>
+                <p>
+                    Fresh strawberry with a fruity twist.
+                </p>
+                <h3>₹120</h3>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
