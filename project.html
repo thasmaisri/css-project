@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FROST - ICE CREAM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: beige;
+            font-family: Arial, sans-serif;
+        }
+        /* SIDEBAR */
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background-color: darkslateblue;
+            color: white;
+            padding: 40px 30px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10;
+        }
+        .logo {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-size: 13px;
+            color: lightseagreen;
+            margin-bottom: 60px;
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar ul li {
+            margin-bottom: 30px;
+        }
+        .sidebar ul li a {
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .sidebar ul li a:hover {
+            color: orange;
+        }
+        .hours {
+            margin-top: 100px;
+            font-size: 13px;
+            color: bisque;
+        }
+        .hours h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        /* HOME */
+        .main {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            min-height: 100vh;
+            padding: 100px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .content {
+            width: 50%;
+        }
+        .small-heading {
+            color: orange;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        .content h1 {
+            font-size: 55px;
+            color: darkslateblue;
+            margin-bottom: 25px;
+        }
+        .content p {
+            font-size: 17px;
+            color: lightslategrey;
+            margin-bottom: 35px;
+            line-height: 27px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn1 {
+            background-color: orange;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn2 {
+            border: 2px solid darkslateblue;
+            color: blueviolet;
+            padding: 13px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn1:hover {
+            background-color: darkslateblue;
+        }
+        .btn2:hover {
+            background-color: darkslateblue;
+            color: white;
+        }
+        .icecream {
+            width: 45%;
+            height: 450px;
+            position: relative;
+        }
+        .scoop1 {
+            width: 220px;
+            height: 220px;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            left: 100px;
+        }
+        .scoop2 {
+            width: 180px;
+            height: 180px;
+            background-color: lightseagreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 190px;
+            left: 30px;
+        }
+        .scoop3 {
+            width: 170px;
+            height: 170px;
+            background-color: bisque;
+            border-radius: 50%;
+            position: absolute;
+            top: 210px;
+            left: 220px;
+        }
+        /* FLAVORS */
+        .flavors {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            min-height: 100vh;
+            padding: 70px 50px;
+            background-color: #fffaf0;
+        }
+        .flavor-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .flavor-heading h4 {
+            color: orange;
+            margin-bottom: 15px;
+        }
+        .flavor-heading h1 {
+            font-size: 40px;
+            color: darkslategrey;
+            margin-bottom: 15px;
+        }
+        .flavor-heading p {
+            color: lightslategray;
+            font-size: 16px;
+        }
+        .flavor-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+        .flavor-card {
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+        .flavor-card:hover {
+            background-color: aliceblue;
+            transform: translate(10px, 20px);
+        }
+        .flavor-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        .chocolate {
+            background-color: #795548;
+        }
+        .vanilla {
+            background-color: #f0d9a8;
+        }
+        .strawberry {
+            background-color: #e98a9b;
+        }
+        .butterscotch {
+            background-color: bisque;
+        }
+        .chocolatetruffle {
+            background-color: burlywood;
+        }
+        .raspberrychocopie {
+            background-color: maroon;
+        }
+        .flavor-card h2 {
+            color: grey;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .flavor-card p {
+            color: black;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .flavor-card h3 {
+            color: orange;
+            font-size: 18px;
+        }
+        /* BUILD YOUR OWN */
+        .build {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            min-height: 100vh;
+            padding: 70px 50px;
+            background-color: white;
+        }
+        .build-heading {
+            margin-bottom: 60px;
+        }
+        .build-heading h4 {
+            color: coral;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .build-heading h1 {
+            color: darkslateblue;
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+        .build-heading p {
+            color: lightslategrey;
+            font-size: 17px;
+            line-height: 30px;
+        }
+        .build-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .build-steps {
+            width: 50%;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: beige;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+        .step-number {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background-color: coral;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .step-content h3 {
+            color: darkslateblue;
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+        .step-content p {
+            color: lightslategrey;
+            font-size: 14px;
+            line-height: 25px;
+        }
+        .sundae {
+            width: 45%;
+            height: 430px;
+            background-color: beige;
+            border-radius: 35px;
+            text-align: center;
+            padding: 40px;
+        }
+        .bowl {
+            width: 220px;
+            height: 120px;
+            background-color: darkslateblue;
+            border-radius: 0 0 110px 110px;
+            margin: 40px auto 30px;
+            position: relative;
+        }
+        .ball1 {
+            width: 100px;
+            height: 100px;
+            background-color: wheat;
+            border-radius: 50%;
+            position: absolute;
+            top: -55px;
+            left: 25px;
+        }
+        .ball2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightpink;
+            border-radius: 50%;
+            position: absolute;
+            top: -55px;
+            left: 105px;
+        }
+        .ball3 {
+            width: 85px;
+            height: 85px;
+            background-color: #8fc5ad;
+            border-radius: 50%;
+            position: absolute;
+            top: -90px;
+            left: 70px;
+        }
+        .sundae h2 {
+            color: darkslateblue;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .sundae h1 {
+            color: coral;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+        .sundae p {
+            color: lightslategrey;
+            font-size: 14px;
+        }
+        /* CATERING */
+        .catering {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            min-height: 100vh;
+            padding: 70px 50px;
+            background-color: white;
+        }
+        .catering-heading {
+            margin-bottom: 60px;
+        }
+        .catering-heading h4 {
+            color: coral;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .catering-heading h1 {
+            color: darkslateblue;
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+        .catering-heading p {
+            color: lightslategrey;
+            font-size: 17px;
+            line-height: 30px;
+        }
+        .catering-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .catering-card {
+            background-color: beige;
+            border-radius: 25px;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+        .catering-card:hover {
+            transform: translateY(10px);
+        }
+        .catering-image {
+            width: 100%;
+            height: 210px;
+            background-size: cover;
+            background-position: center;
+        }
+        .image1 {
+            background-image: url("https://images.unsplash.com/photo-1560008581-09826d1de69e?w=600");
+        }
+        .image2 {
+            background-image: url("https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600");
+        }
+        .image3 {
+            background-image: url("https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=600");
+        }
+        .catering-content {
+            padding: 25px;
+        }
+        .catering-content h2 {
+            color: darkslateblue;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+        .catering-content p {
+            color: lightslategrey;
+            font-size: 14px;
+            line-height: 25px;
+            margin-bottom: 20px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .features span {
+            background-color: #eee9d5;
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: darkslateblue;
+        }
+        .price {
+            color: coral;
+            font-size: 28px;
+        }
+        /* SEASONAL */
+        .seasonal {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            min-height: 100vh;
+            padding: 70px 50px;
+            background-color: #f5f2df;
+        }
+        .seasonal-heading {
+            margin-bottom: 35px;
+        }
+        .seasonal-heading h4 {
+            color: coral;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        .seasonal-heading h1 {
+            color: darkslateblue;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .seasonal-heading p {
+            color: lightslategrey;
+            font-size: 16px;
+            line-height: 25px;
+        }
+        .season-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .season-buttons button {
+            padding: 20px 10px;
+            border: none;
+            border-radius: 12px;
+            background-color: #eee9d5;
+            color: darkslateblue;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .season-buttons button:hover {
+            background-color: #d15e7d;
+            color: white;
+        }
+        .seasonal-card {
+            background-color: white;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+        .seasonal-image {
+            width: 100%;
+            height: 280px;
+            background-image: url("https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=1000");
+            background-size: cover;
+            background-position: center;
+        }
+        .seasonal-content {
+            padding: 30px;
+        }
+        .seasonal-content h4 {
+            color: coral;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        .seasonal-content h2 {
+            color: darkslateblue;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        .seasonal-content p {
+            color: lightslategrey;
+            font-size: 15px;
+            line-height: 25px;
+            margin-bottom: 20px;
+        }
+        .seasonal-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .seasonal-features span {
+            background-color: #f5f2df;
+            padding: 10px 15px;
+            border-radius: 20px;
+            color: darkslateblue;
+            font-size: 12px;
+        }
+        .seasonal-btn {
+            display: inline-block;
+            background-color: coral;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+        .seasonal-btn:hover {
+            background-color: darkslateblue;
+        }
+        /* LOYALTY */
+        .loyalty {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            min-height: 100vh;
+            padding: 70px 6%;
+            background-color: #f5f2df;
+        }
+        .loyalty-heading {
+            margin-bottom: 45px;
+        }
+        .loyalty-heading h4 {
+            color: coral;
+            font-size: 13px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .loyalty-heading h1 {
+            color: darkslateblue;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .loyalty-heading p {
+            color: lightslategrey;
+            font-size: 16px;
+            line-height: 25px;
+            max-width: 500px;
+        }
+        .loyalty-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+        .rewards-list {
+            width: 48%;
+        }
+        .reward {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .check {
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+            background-color: #8fc5ad;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .reward p {
+            color: lightslategrey;
+            font-size: 14px;
+            line-height: 22px;
+        }
+        .reward p strong {
+            color: darkslateblue;
+        }
+        .collect-btn {
+            display: inline-block;
+            background-color: #8fc5ad;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-top: 5px;
+        }
+        .collect-btn:hover {
+            background-color: darkslateblue;
+        }
+        /* STAMP CARD */
+        .stamp-card {
+            width: 48%;
+            background-color: white;
+            padding: 25px;
+            border-radius: 25px;
+            border-top: 5px solid coral;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+        .stamp-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .stamp-heading h3 {
+            color: darkslateblue;
+            font-size: 20px;
+        }
+        .stamp-heading p {
+            color: coral;
+            font-size: 13px;
+        }
+        .stamps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        .stamp {
+            height: 100px;
+            background-color: coral;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+        }
+        .stamp.filled {
+            background-color: #e77d60;
+            color: #ffe2ae;
+        }
+        .stamp.bonus {
+            background-color: #8fc5ad;
+            color: white;
+        }
+        .stamp.empty {
+            background-color: white;
+            border: 1px dashed #d9dce5;
+            color: #f5e8d8;
+        }
+        .stamp.free {
+            background-color: white;
+            border: 1px dashed #8fc5ad;
+            color: #8fc5ad;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .stamp-note {
+            text-align: center;
+            font-size: 12px;
+            color: lightslategrey;
+            margin-top: 18px;
+        }
+        /* FOOTER */
+        .footer {
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            background-color: darkslateblue;
+            color: white;
+            padding: 45px 6%;
+            display: flex;
+            justify-content: space-between;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+        .footer-about {
+            max-width: 280px;
+        }
+        .footer-logo {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .footer-logo span {
+            color: coral;
+        }
+        .footer-about p {
+            font-size: 13px;
+            line-height: 22px;
+            color: #c5c5d4;
+        }
+        .footer-links {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .footer-column h4 {
+            color: #8fc5ad;
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+        .footer-column a {
+            display: block;
+            color: #c5c5d4;
+            font-size: 13px;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+        .footer-column a:hover {
+            color: coral;
+        }
+        /* RESPONSIVE DESIGN */
+        @media screen and (max-width: 900px) {
+            .sidebar {
+                width: 170px;
+                padding: 30px 20px;
+            }
+            .main, .flavors, .build, .catering, .seasonal, .loyalty, .footer {
+                margin-left: 170px;
+                width: calc(100% - 170px);
+                padding: 50px 25px;
+            }
+            .content h1 {
+                font-size: 40px;
+            }
+            .flavor-container, .catering-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .build-container {
+                flex-direction: column;
+            }
+            .build-steps, .sundae {
+                width: 100%;
+            }
+            .loyalty-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .rewards-list, .stamp-card {
+                width: 100%;
+            }
+            .footer-links {
+                gap: 30px;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+            }
+            .tagline {
+                margin-bottom: 20px;
+            }
+            .sidebar ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .sidebar ul li {
+                margin-bottom: 10px;
+            }
+            .hours {
+                margin-top: 20px;
+            }
+            .main, .flavors, .build, .catering, .seasonal, .loyalty, .footer {
+                margin-left: 0;
+                width: 100%;
+                padding: 40px 20px;
+            }
+            .main {
+                display: block;
+            }
+            .content {
+                width: 100%;
+            }
+            .content h1 {
+                font-size: 35px;
+            }
+            .icecream {
+                width: 100%;
+                margin-top: 40px;
+                transform: scale(0.8);
+                transform-origin: top left;
+            }
+            .flavor-container, .catering-container {
+                grid-template-columns: 1fr;
+            }
+            .build-heading h1, .catering-heading h1 {
+                font-size: 32px;
+            }
+            .step {
+                padding: 15px;
+            }
+            .sundae {
+                padding: 20px;
+            }
+            .season-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .seasonal-heading h1, .loyalty-heading h1 {
+                font-size: 30px;
+            }
+            .seasonal-image {
+                height: 200px;
+            }
+            .stamp {
+                height: 65px;
+            }
+            .footer-links {
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2 class="logo">Frost.</h2>
+        <p class="tagline">COOL TREATS FOR WARM HEARTS</p>
+        <ul>
+            <li><a href="#home">◎ Home</a></li>
+            <li><a href="#flavors">⁕ Flavors</a></li>
+            <li><a href="#build">★ Build Yours</a></li>
+            <li><a href="#catering">♧ Catering</a></li>
+            <li><a href="#seasonal">❄ Seasonal</a></li>
+            <li><a href="#loyalty">♥ Loyalty</a></li>
+        </ul>
+        <div class="hours">
+            <h3>Hours</h3>
+            <p>Mon - Fri: 11 AM - 9 PM</p>
+            <p>Sat - Sun: 10 AM - 10 PM</p>
+        </div>
+    </div>
+    <!-- HOME -->
+    <div class="main" id="home">
+        <div class="content">
+            <h4 class="small-heading">NOW SCOOPING</h4>
+            <h1>Life's too short for boring desserts.</h1>
+            <p>Handcrafted ice creams made with love, fresh ingredients and a little bit of magic. Come and enjoy your favorite flavors!</p>
+            <div class="buttons">
+                <a href="#flavors" class="btn1">Explore Flavors</a>
+                <a href="#catering" class="btn2">Book a Cart</a>
+            </div>
+        </div>
+        <div class="icecream">
+            <div class="scoop1"></div>
+            <div class="scoop2"></div>
+            <div class="scoop3"></div>
+        </div>
+    </div>
+    <!-- FLAVORS -->
+    <div class="flavors" id="flavors">
+        <div class="flavor-heading">
+            <h4>OUR MENU</h4>
+            <h1>Explore Our Flavors</h1>
+            <p>Every scoop is made with fresh ingredients and lots of love. Find your favorite flavor!</p>
+        </div>
+        <div class="flavor-container">
+            <div class="flavor-card">
+                <div class="flavor-image chocolate"></div>
+                <h2>Chocolate</h2>
+                <p>Rich and creamy chocolate ice cream.</p>
+                <h3>$5</h3>
+            </div>
+            <div class="flavor-card">
+                <div class="flavor-image vanilla"></div>
+                <h2>Vanilla</h2>
+                <p>Classic vanilla with a smooth taste.</p>
+                <h3>$4</h3>
+            </div>
+            <div class="flavor-card">
+                <div class="flavor-image strawberry"></div>
+                <h2>Strawberry</h2>
+                <p>Fresh strawberry with a fruity twist.</p>
+                <h3>$4</h3>
+            </div>
+            <div class="flavor-card">
+                <div class="flavor-image butterscotch"></div>
+                <h2>Butterscotch</h2>
+                <p>Crunchy praline and butterscotch bits in every delicious bite.</p>
+                <h3>$4</h3>
+            </div>
+            <div class="flavor-card">
+                <div class="flavor-image chocolatetruffle"></div>
+                <h2>Chocolate Truffle</h2>
+                <p>Rich chocolate flavor with a delicious truffle taste.</p>
+                <h3>$6</h3>
+            </div>
+            <div class="flavor-card">
+                <div class="flavor-image raspberrychocopie"></div>
+                <h2>Raspberry Chocopie</h2>
+                <p>Tart raspberry ripple folded through creamy white chocolate.</p>
+                <h3>$5</h3>
+            </div>
+        </div>
+    </div>
+    <!-- BUILD YOUR OWN -->
+    <div class="build" id="build">
+        <div class="build-heading">
+            <h4>BUILD YOUR OWN</h4>
+            <h1>Your sundae, your rules</h1>
+            <p>Walk through our four-step sundae builder at the counter or order ahead for pickup. Over 2,000 combinations to try.</p>
+        </div>
+        <div class="build-container">
+            <div class="build-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Choose Your Base</h3>
+                        <p>Ice cream, gelato, frozen yogurt, or dairy-free sorbet. Pick one, two, or go all three for the ultimate bowl.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Pick Your Vessel</h3>
+                        <p>Classic waffle cone, handmade sugar bowl, glass cup, or our signature chocolate-dipped mega cone.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Load the Toppings</h3>
+                        <p>Crushed Oreos, toasted coconut, candied pecans, fresh berries, brownie bites, mochi chunks, and many more.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Drizzle & Finish</h3>
+                        <p>Hot fudge, caramel sauce, matcha drizzle, raspberry coulis, or honey.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sundae">
+                <div class="bowl">
+                    <div class="ball1"></div>
+                    <div class="ball2"></div>
+                    <div class="ball3"></div>
+                </div>
+                <h2>Build-Your-Own Sundae</h2>
+                <h1>From $7.50</h1>
+                <p>Base + 3 toppings included</p>
+            </div>
+        </div>
+    </div>
+    <!-- CATERING -->
+    <div class="catering" id="catering">
+        <div class="catering-heading">
+            <h4>CATERING CART RENTAL</h4>
+            <h1>Bring the sweetness to you</h1>
+            <p>Our vintage carts come fully stocked with your choice of flavors, a friendly scooper, and all the toppings your guests could dream of.</p>
+        </div>
+        <div class="catering-container">
+            <div class="catering-card">
+                <div class="catering-image image1"></div>
+                <div class="catering-content">
+                    <h2>The Mini Scoop</h2>
+                    <p>Perfect for birthday parties, baby showers, and small office celebrations. Compact cart, big flavors.</p>
+                    <div class="features">
+                        <span>Up to 30 guests</span>
+                        <span>3 flavors</span>
+                        <span>2 hours</span>
+                    </div>
+                    <h3 class="price">$350</h3>
+                </div>
+            </div>
+            <div class="catering-card">
+                <div class="catering-image image2"></div>
+                <div class="catering-content">
+                    <h2>The Classic Cart</h2>
+                    <p>Our signature vintage cart experience. Ideal for weddings, corporate events, and weekend festivals.</p>
+                    <div class="features">
+                        <span>Up to 100 guests</span>
+                        <span>6 flavors</span>
+                        <span>3 hours</span>
+                        <span>Toppings bar</span>
+                    </div>
+                    <h3 class="price">$750</h3>
+                </div>
+            </div>
+            <div class="catering-card">
+                <div class="catering-image image3"></div>
+                <div class="catering-content">
+                    <h2>The Grand Parlor</h2>
+                    <p>The full experience with a double cart setup, a gelato station, waffle bar, and dedicated event coordinator.</p>
+                    <div class="features">
+                        <span>Up to 250 guests</span>
+                        <span>10 flavors</span>
+                        <span>4 hours</span>
+                        <span>Waffle bar</span>
+                        <span>Coordinator</span>
+                    </div>
+                    <h3 class="price">$1400</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SEASONAL -->
+    <div class="seasonal" id="seasonal">
+        <div class="seasonal-heading">
+            <h4>LIMITED EDITIONS</h4>
+            <h1>Seasonal scoops, fleeting & fresh</h1>
+            <p>Each season brings a small-batch lineup inspired by what's ripe, what's in the air, and a little bit of nostalgia.</p>
+        </div>
+        <div class="season-buttons">
+            <button>Spring</button>
+            <button>Summer</button>
+            <button>Autumn</button>
+            <button>Winter</button>
+        </div>
+        <div class="seasonal-card">
+            <div class="seasonal-image"></div>
+            <div class="seasonal-content">
+                <h4>Spring Collection</h4>
+                <h2>Cherry Blossom Almond</h2>
+                <p>A floral almond gelato topped with candied cherry blossom petals and a hint of rosewater. Light, fragrant, and utterly dreamy — like a stroll through a blooming orchard.</p>
+                <div class="seasonal-features">
+                    <span>Gelato</span>
+                    <span>Limited Batch</span>
+                    <span>Nut Allergy Info</span>
+                </div>
+                <a href="#flavors" class="seasonal-btn">Try it Now</a>
+            </div>
+        </div>
+    </div>
+    <!-- LOYALTY -->
+    <div class="loyalty" id="loyalty">
+        <div class="loyalty-heading">
+            <h4>FROST REWARDS</h4>
+            <h1>Every scoop gets you closer</h1>
+            <p>Grab a stamp card on your next visit. Ten stamps earns a free scoop — plus bonus perks along the way.</p>
+        </div>
+        <div class="loyalty-content">
+            <div class="rewards-list">
+                <div class="reward">
+                    <div class="check">✓</div>
+                    <p><strong>5th stamp:</strong> Free topping upgrade on any sundae or cone — go ahead, add the brownie bites.</p>
+                </div>
+                <div class="reward">
+                    <div class="check">✓</div>
+                    <p><strong>10th stamp:</strong> One free single scoop in any flavor, including seasonal and limited editions.</p>
+                </div>
+                <div class="reward">
+                    <div class="check">✓</div>
+                    <p><strong>Birthday bonus:</strong> Show your ID on your birthday month and get a free waffle cone upgrade all week.</p>
+                </div>
+                <div class="reward">
+                    <div class="check">✓</div>
+                    <p><strong>Referral reward:</strong> Bring a friend who starts a card, and you both get a bonus stamp.</p>
+                </div>
+                <a href="#home" class="collect-btn">Start Collecting</a>
+            </div>
+            <div class="stamp-card">
+                <div class="stamp-heading">
+                    <h3>Your Stamp Card</h3>
+                    <p>7 / 10</p>
+                </div>
+                <div class="stamps">
+                    <div class="stamp filled">🍦</div>
+                    <div class="stamp filled">🍦</div>
+                    <div class="stamp filled">🍦</div>
+                    <div class="stamp filled">🍦</div>
+                    <div class="stamp bonus">★</div>
+                    <div class="stamp filled">🍦</div>
+                    <div class="stamp filled">🍦</div>
+                    <div class="stamp empty">🍦</div>
+                    <div class="stamp empty">🍦</div>
+                    <div class="stamp free">FREE</div>
+                </div>
+                <div class="stamp-note">3 more scoops until your free treat!</div>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-about">
+            <div class="footer-logo">Fr<span>o</span>st</div>
+            <p>Small-batch ice cream and gelato, handcrafted daily in our kitchen on Oak Street. Made with love, served with a smile.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>MENU</h4>
+                <a href="#flavors">Flavors</a>
+                <a href="#build">Build Your Own</a>
+                <a href="#seasonal">Seasonal Scoops</a>
+                <a href="#catering">Catering</a>
+            </div>
+            <div class="footer-column">
+                <h4>COMPANY</h4>
+                <a href="#">Our Story</a>
+                <a href="#">Sourcing</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+            </div>
+            <div class="footer-column">
+                <h4>CONNECT</h4>
+                <a href="#">X Handle</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="mailto:hello@frost.co">hello@frost.co</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
